@@ -21,14 +21,34 @@ CREATE TABLE Account (
     createdOn DATETIME,
     modifiedOn DATETIME
     );
+    
+CREATE TABLE AddressBook (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    accountId INT,
+    name VARCHAR(255),
+    createdOn DATETIME,
+    modifiedOn DATETIME
+    );
+    
 
 CREATE TABLE Entry (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY Key,
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     addressBookId INT,
     firstName VARCHAR(255),
     lastName VARCHAR(255), 
     birthday DATETIME,
     type ENUM('phone', 'address', 'electronic-mail')
+    );
+    
+CREATE TABLE Address (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    entryId INT,
+    addressLine1 VARCHAR(255),
+    addressLine2 VARCHAR(255),
+    city VARCHAR(255),
+    province VARCHAR(128),
+    country VARCHAR(128),
+    postalCode VARCHAR(10)
     );
     
 CREATE TABLE ElectronicMail (
@@ -46,3 +66,15 @@ CREATE TABLE Phone (
     content VARCHAR(255)
     );
 
+mysql> show tables;
++---------------------------------+
+| Tables_in_decodemtl_addressbook |
++---------------------------------+
+| Account                         |
+| Address                         |
+| AddressBook                     |
+| ElectronicMail                  |
+| Entry                           |
+| Phone                           |
++---------------------------------+
+6 rows in set (0.00 sec)

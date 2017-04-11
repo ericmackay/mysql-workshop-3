@@ -1,0 +1,11 @@
+Exercise 2
+
+Bulk import data from the source files into decodemtl_addressbook:
+data/import-account.sql
+data/import-addressbook.sql
+data/import-entry.sql
+
+
+Source data/import-account.sql;
+Source data/import-addressbook.sql;
+Source data/import-entry.sql;
