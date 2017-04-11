@@ -1,0 +1,48 @@
+Exercise 1
+
+Reflect the data model shown in schema/addressbook_normalized.png within database decodemtl_addressbook
+Account.id is a primary auto-increment key
+AddressBook.id is a primary auto-increment key
+Entry.id is a primary auto-increment key
+Entry.type is an ENUM column permitting phone, address and electronic-mail
+Address.id is a primary auto-increment key
+Address.type is an ENUM column permitting home, work and other
+ElectronicMail.id is a primary auto-increment key
+ElectronicMail.type is an ENUM column permitting home, work and other
+Phone.id is a primary auto-increment key
+Phone.type is an ENUM column permitting home, work and other
+Phone.subtype is an ENUM column permitting landline, cellular and fax
+
+
+CREATE TABLE Account (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255),
+    password VARCHAR(40),
+    createdOn DATETIME,
+    modifiedOn DATETIME
+    );
+
+CREATE TABLE Entry (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY Key,
+    addressBookId INT,
+    firstName VARCHAR(255),
+    lastName VARCHAR(255), 
+    birthday DATETIME,
+    type ENUM('phone', 'address', 'electronic-mail')
+    );
+    
+CREATE TABLE ElectronicMail (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    entryId INT,
+    type ENUM ('home', 'work', 'other'),
+    content VARCHAR(255)
+    );
+
+CREATE TABLE Phone (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    entryId INT, 
+    type ENUM ('home', 'work', 'other'),
+    subtype ENUM ('landline', 'cellular', 'fax'),
+    content VARCHAR(255)
+    );
+
